@@ -4,7 +4,6 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 
 export function useAuth() {
     const { address, isConnected } = useAccount();
-
     const { setAddress, setIsConnected } = useAppContext();
     const { connect } = useConnect({
         connector: new InjectedConnector(),
@@ -29,7 +28,7 @@ export function useAuth() {
         try {
             await disconnect();
             setAddress(address ?? "");
-            setIsConnected(isConnected);
+            setIsConnected(true);
         } catch (e) {
             console.log("Error disconnecting: " + e);
         }
